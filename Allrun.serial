@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+hisa 2>&1 | tee log.hisa_serial

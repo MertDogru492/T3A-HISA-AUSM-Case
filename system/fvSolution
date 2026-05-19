@@ -1,0 +1,83 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+
+flowSolver
+{
+    solver          GMRES;
+    GMRES
+    {
+        inviscidJacobian    LaxFriedrichs;
+        viscousJacobian     laplacian;
+        preconditioner      LUSGS;
+        maxIter             20;
+        nKrylov             8;
+        solverTol           1e-8 (1e-8 1e-8 1e-8) 1e-8;
+        solverTolRel        1e-1 (1e-1 1e-1 1e-1) 1e-1;
+    }
+}
+
+pseudoTime
+{
+    rPseudoDeltaT
+    {
+        maxCo               20;
+        localTimestepping   yes;
+    }
+}
+
+solvers
+{
+    yPsi
+    {
+        solver      GAMG;
+        smoother    GaussSeidel;
+        tolerance   1e-6;
+        relTol      0;
+    }
+
+    k
+    {
+        solver      smoothSolver;
+        smoother    GaussSeidel;
+        tolerance   1e-8;
+        relTol      0.1;
+    }
+
+    omega
+    {
+        solver      smoothSolver;
+        smoother    GaussSeidel;
+        tolerance   1e-8;
+        relTol      0.1;
+    }
+
+    gammaInt
+    {
+        solver      smoothSolver;
+        smoother    GaussSeidel;
+        tolerance   1e-8;
+        relTol      0.1;
+    }
+
+    ReThetat
+    {
+        solver      smoothSolver;
+        smoother    GaussSeidel;
+        tolerance   1e-8;
+        relTol      0.1;
+    }
+
+}
+
+relaxationFactors
+{
+    equations
+    {
+        "(k|omega|gammaInt|ReThetat)" 0.5;
+    }
+}

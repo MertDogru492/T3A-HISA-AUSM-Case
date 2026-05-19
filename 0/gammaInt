@@ -1,0 +1,42 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      gammaInt;
+}
+
+dimensions      [0 0 0 0 0 0 0];
+
+// internalField is only numerical initial condition.
+// inlet value = 1; label: PAPER_EXACT_GAMMA_INLET_1__ReThetat_FORMULA_168
+internalField   uniform 0;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 1;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    top
+    {
+        type            symmetryPlane;
+    }
+    prePlate
+    {
+        type            symmetryPlane;
+    }
+    plate
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}

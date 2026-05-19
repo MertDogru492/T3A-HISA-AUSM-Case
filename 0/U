@@ -1,0 +1,51 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+#include "include/freestreamConditions"
+dimensions      [0 1 -1 0 0 0 0];
+internalField   uniform $U;
+boundaryField
+{
+    inlet
+    {
+        type characteristicFarfieldVelocity;
+        U $U;
+        p $p;
+        T $T;
+        value $internalField;
+    }
+
+    outlet
+    {
+        type characteristicFarfieldVelocity;
+        U $U;
+        p $p;
+        T $T;
+        value $internalField;
+    }
+
+    top
+    {
+        type symmetryPlane;
+    }
+
+    prePlate
+    {
+        type symmetryPlane;
+    }
+
+    plate
+    {
+        type boundaryCorrectedFixedValue;
+        value uniform (0 0 0);
+    }
+
+    frontAndBack
+    {
+        type empty;
+    }
+}

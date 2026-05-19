@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+rm -rf processor*
+rm -rf postProcessing
+rm -rf dynamicCode
+rm -rf [1-9]* [1-9]*.[0-9]*
+rm -f log.* *.log *.foam core core.*
+
+echo "Cleaned generated OpenFOAM files."

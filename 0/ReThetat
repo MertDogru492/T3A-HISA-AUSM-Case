@@ -1,0 +1,42 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      ReThetat;
+}
+
+dimensions      [0 0 0 0 0 0 0];
+
+// Paper does NOT give an OpenFOAM ReThetat inlet value.
+// Here value is model/correlation input, not experimental data: 168.
+internalField   uniform 168;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 168;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    top
+    {
+        type            symmetryPlane;
+    }
+    prePlate
+    {
+        type            symmetryPlane;
+    }
+    plate
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}

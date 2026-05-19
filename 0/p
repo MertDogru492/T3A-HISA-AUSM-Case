@@ -1,0 +1,51 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+#include "include/freestreamConditions"
+dimensions      [1 -1 -2 0 0 0 0];
+internalField   uniform $p;
+boundaryField
+{
+    inlet
+    {
+        type characteristicFarfieldPressure;
+        U $U;
+        p $p;
+        T $T;
+        value $internalField;
+    }
+
+    outlet
+    {
+        type characteristicFarfieldPressure;
+        U $U;
+        p $p;
+        T $T;
+        value $internalField;
+    }
+
+    top
+    {
+        type symmetryPlane;
+    }
+
+    prePlate
+    {
+        type symmetryPlane;
+    }
+
+    plate
+    {
+        type characteristicWallPressure;
+        value $internalField;
+    }
+
+    frontAndBack
+    {
+        type empty;
+    }
+}

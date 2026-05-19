@@ -1,0 +1,55 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleBLDict;
+}
+
+functions
+{
+    sampleBL
+    {
+        type                sets;
+        libs                (sampling);
+        interpolationScheme cellPoint;
+        setFormat           raw;
+        fields (U k omega gammaInt ReThetat nut p T rho alphat);
+        sets
+        (
+            x_0p050 { type uniform; axis distance; start (0.050 0 0.005); end (0.050 0.180 0.005); nPoints 720; }
+            x_0p095 { type uniform; axis distance; start (0.095 0 0.005); end (0.095 0.180 0.005); nPoints 720; }
+            x_0p100 { type uniform; axis distance; start (0.100 0 0.005); end (0.100 0.180 0.005); nPoints 720; }
+            x_0p150 { type uniform; axis distance; start (0.150 0 0.005); end (0.150 0.180 0.005); nPoints 720; }
+            x_0p200 { type uniform; axis distance; start (0.200 0 0.005); end (0.200 0.180 0.005); nPoints 720; }
+            x_0p250 { type uniform; axis distance; start (0.250 0 0.005); end (0.250 0.180 0.005); nPoints 720; }
+            x_0p300 { type uniform; axis distance; start (0.300 0 0.005); end (0.300 0.180 0.005); nPoints 720; }
+            x_0p350 { type uniform; axis distance; start (0.350 0 0.005); end (0.350 0.180 0.005); nPoints 720; }
+            x_0p400 { type uniform; axis distance; start (0.400 0 0.005); end (0.400 0.180 0.005); nPoints 720; }
+            x_0p450 { type uniform; axis distance; start (0.450 0 0.005); end (0.450 0.180 0.005); nPoints 720; }
+            x_0p500 { type uniform; axis distance; start (0.500 0 0.005); end (0.500 0.180 0.005); nPoints 720; }
+            x_0p550 { type uniform; axis distance; start (0.550 0 0.005); end (0.550 0.180 0.005); nPoints 720; }
+            x_0p595 { type uniform; axis distance; start (0.595 0 0.005); end (0.595 0.180 0.005); nPoints 720; }
+            x_0p600 { type uniform; axis distance; start (0.600 0 0.005); end (0.600 0.180 0.005); nPoints 720; }
+            x_0p650 { type uniform; axis distance; start (0.650 0 0.005); end (0.650 0.180 0.005); nPoints 720; }
+            x_0p700 { type uniform; axis distance; start (0.700 0 0.005); end (0.700 0.180 0.005); nPoints 720; }
+            x_0p750 { type uniform; axis distance; start (0.750 0 0.005); end (0.750 0.180 0.005); nPoints 720; }
+            x_0p800 { type uniform; axis distance; start (0.800 0 0.005); end (0.800 0.180 0.005); nPoints 720; }
+            x_0p850 { type uniform; axis distance; start (0.850 0 0.005); end (0.850 0.180 0.005); nPoints 720; }
+            x_0p900 { type uniform; axis distance; start (0.900 0 0.005); end (0.900 0.180 0.005); nPoints 720; }
+            x_0p950 { type uniform; axis distance; start (0.950 0 0.005); end (0.950 0.180 0.005); nPoints 720; }
+            x_1p000 { type uniform; axis distance; start (1.000 0 0.005); end (1.000 0.180 0.005); nPoints 720; }
+            x_1p100 { type uniform; axis distance; start (1.100 0 0.005); end (1.100 0.180 0.005); nPoints 720; }
+            x_1p200 { type uniform; axis distance; start (1.200 0 0.005); end (1.200 0.180 0.005); nPoints 720; }
+            x_1p295 { type uniform; axis distance; start (1.295 0 0.005); end (1.295 0.180 0.005); nPoints 720; }
+            x_1p300 { type uniform; axis distance; start (1.300 0 0.005); end (1.300 0.180 0.005); nPoints 720; }
+            x_1p400 { type uniform; axis distance; start (1.400 0 0.005); end (1.400 0.180 0.005); nPoints 720; }
+            x_1p500 { type uniform; axis distance; start (1.500 0 0.005); end (1.500 0.180 0.005); nPoints 720; }
+            x_1p600 { type uniform; axis distance; start (1.600 0 0.005); end (1.600 0.180 0.005); nPoints 720; }
+            x_1p700 { type uniform; axis distance; start (1.700 0 0.005); end (1.700 0.180 0.005); nPoints 720; }
+            x_1p800 { type uniform; axis distance; start (1.800 0 0.005); end (1.800 0.180 0.005); nPoints 720; }
+            x_1p900 { type uniform; axis distance; start (1.900 0 0.005); end (1.900 0.180 0.005); nPoints 720; }
+            x_2p000 { type uniform; axis distance; start (2.000 0 0.005); end (2.000 0.180 0.005); nPoints 720; }
+        );
+    }
+}

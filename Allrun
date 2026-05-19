@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+NP="${NP:-4}"
+
+echo "Running T3A HiSA AUSM case with NP=${NP}"
+
+if ! command -v hisa >/dev/null 2>&1; then
+    echo "ERROR: hisa executable not found. Source OpenFOAM/HiSA environment first."
+    exit 1
+fi
+
+rm -rf processor*
+
+decomposePar -force 2>&1 | tee log.decomposePar
+
+if [ "$(id -u)" -eq 0 ]; then
+    MPI_ROOT_FLAG="--allow-run-as-root"
+else
+    MPI_ROOT_FLAG=""
+fi
+
+mpirun ${MPI_ROOT_FLAG} -np "${NP}" hisa -parallel 2>&1 | tee log.hisa_parallel
+
+reconstructPar -latestTime 2>&1 | tee log.reconstructPar_latest
+
+echo "Done."
